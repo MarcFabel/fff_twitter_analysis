@@ -186,11 +186,12 @@ ax.plot(dfs['luisa_w'].loc['2019':].index.values,
         dfs['luisa_w'].loc['2019':]['favorites'],
         color='darkblue',
         label='luisa')
-ax.set_title('Twitter feed of Luisamneubauer', fontweight='bold')
+ax.set_title('Twitter feed of @Luisamneubauer', fontweight='bold')
 ax.set(xlabel='Date', ylabel='Favorites [in thousand]')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-plt.savefig(z_media_figures + z_prefix + 'twitter_luisa_favorites_events.pdf', bbox_inches = "tight")
+plt.savefig(z_media_figures + z_prefix + 'twitter_luisa_favorites_events.png',
+            bbox_inches = "tight", dpi=300)
 
 
 
@@ -260,8 +261,8 @@ for activist in z_list_activists[1:]:
        color=z_dict_activists_color[activist])
     num+=1
 
-plt.savefig(z_media_figures + z_prefix + 'twitter_favorites_spaghetti_wo_greta.pdf',
-            bbox_inches = 'tight')
+plt.savefig(z_media_figures + z_prefix + 'twitter_favorites_spaghetti_wo_greta.png',
+            bbox_inches = 'tight', dpi=300)
 
 
 
@@ -333,9 +334,9 @@ ax1.xaxis.set_major_locator(mdates.MonthLocator(interval=3))
 ax1.xaxis.set_minor_locator(mdates.YearLocator())
 ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
 fig.text(.1, -0.25, txt, ha='left', wrap=True, fontsize=7)
-ax1.set_title('Twitter feed of GretaThunberg', fontweight='bold')
-plt.savefig(z_media_figures + z_prefix + 'twitter_greta_favorites_retweets_weekly_events.pdf',
-             bbox_inches = "tight")
+ax1.set_title('Twitter feed of @GretaThunberg', fontweight='bold')
+plt.savefig(z_media_figures + z_prefix + 'twitter_greta_favorites_retweets_weekly_events.png',
+             bbox_inches = "tight", dpi=300)
 
 
 
@@ -447,7 +448,7 @@ clean_string = ' '.join(words)
 wc.generate(clean_string)
 
 fig = plt.figure(
-    figsize = (20, 16),
+    figsize = (10, 8),
     facecolor = 'k',
     edgecolor = 'k')
 
@@ -455,7 +456,7 @@ fig = plt.figure(
 plt.imshow(wc.recolor(color_func=grey_color_func, random_state=3), interpolation = 'bilinear')
 plt.axis('off')
 plt.tight_layout(pad=0)
-plt.savefig(z_media_figures + z_prefix + 'twitter_greta_word_cloud.pdf')
+plt.savefig(z_media_figures + z_prefix + 'twitter_greta_word_cloud.png', dpi=300)
 
 
 
@@ -568,8 +569,8 @@ for item in ax.get_xticklabels():
 plt.tight_layout()      # makes room for the x-label (as it is quite wide)
 fig.text(.1, -0.25, txt, ha='left', wrap=True, fontsize=7)
 
-plt.savefig(z_media_figures + z_prefix + 'twitter_greta_frequency_common_mentions.pdf',
-            bbox_inches = 'tight')
+plt.savefig(z_media_figures + z_prefix + 'twitter_greta_frequency_common_mentions.png',
+            bbox_inches = 'tight', dpi=300)
 
 
 
@@ -622,7 +623,7 @@ ax1.set_xlabel('')
 ax2.set_xlabel('')
 ax1.set_title('Polarity')
 ax2.set_title('Subjectivity')
-plt.savefig(z_media_figures + z_prefix + 'twitter_greta_subjectivity_polarity_hist.pdf')
+#plt.savefig(z_media_figures + z_prefix + 'twitter_greta_subjectivity_polarity_hist.pdf')
 
 
 
@@ -710,7 +711,7 @@ fig, [[ax1, ax2], [ax3, ax4]] = plt.subplots(nrows=2, ncols=2, figsize=(8,6))
 fig.subplots_adjust(hspace = .5)
 sns.despine()
 fig = plt.gcf()
-fig.suptitle('Sentiment and length of tweets [GretaThunberg]', fontsize=16)
+fig.suptitle('Sentiment and length of tweets [@GretaThunberg]', fontsize=16)
 
 ax1.axvline(polarity_df.polarity.mean(), color='darkred', alpha=c_opacity, linestyle='dashed')
 ax1.axvline(polarity_df.polarity.median(), color='darkblue', alpha=c_opacity, linestyle='dashed')
@@ -744,5 +745,5 @@ ax3.set_title('Character count')
 ax4.set_title('Word count')
 
 
-plt.savefig(z_media_figures + z_prefix + 'twitter_activists_scatter_polarity_subjectivity_word_count.pdf',
-             bbox_inches='tight')
+plt.savefig(z_media_figures + z_prefix + 'twitter_activists_scatter_polarity_subjectivity_word_count.png',
+             bbox_inches='tight', dpi=300)
